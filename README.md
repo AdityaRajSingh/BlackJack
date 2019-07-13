@@ -32,5 +32,5 @@ $ npm start
 #### Socket.io 
 
 ## References
-#### Stack Overflow
-#### socket.io
+ Stack Overflow
+ Socket.io
