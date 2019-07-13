@@ -17,6 +17,13 @@ $ npm install
 $ npm start
 ```
 
+## How to start? 
+Using npm:
+
+```bash
+$ npm start
+```
+
 ## Technology Stack
 #### HTML, CSS
 #### Javascript
