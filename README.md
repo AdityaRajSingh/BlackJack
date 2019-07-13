@@ -13,7 +13,7 @@ Also authenticate yourself to play and keep track of your overall profit/loss!
 Using npm:
 
 ```bash
-$ npm install axios
+$ npm install
 ```
 
 ## Technology Stack
