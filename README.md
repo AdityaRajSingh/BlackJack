@@ -14,6 +14,7 @@ Using npm:
 
 ```bash
 $ npm install
+$ npm start
 ```
 
 ## Technology Stack
