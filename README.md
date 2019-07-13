@@ -24,7 +24,7 @@ Using npm:
 $ npm start
 ```
 # Screenshots
-![](./Screenshots/screenshot1.png)
+![](./Screenshots/Screenshot1.png)
 
 ![](./Screenshots/Screenshot2.png)
 
