@@ -1,0 +1,13 @@
+{
+  "name": "blackjack",
+  "version": "0.0.1",
+  "description": "Hackathon project",
+  "dependencies": {
+    "express": "^4.15.2",
+    "package.json": "^2.0.1",
+    "socket.io": "^2.0.4"
+  },
+  "scripts": {
+    "start": "nodemon index.js"
+  }
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Networked Blackjack</title>
+    <link rel="stylesheet" type="text/css" href="/public/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+    />
+    <link href='https://fonts.googleapis.com/css?family=Dawning of a New Day' rel='stylesheet'>
+  </head>
+  <body>
+      <hr />
+      <h1 class="blackjack" id="bj" align="center">Black Jack</h1>
+      <div class="login-container">
+      <form class="login form-signin" action="/public/index.html">
+        <!-- <h2 align="center" class="form-signin-heading"><b>Login</b></h2> -->
+        
+        <input
+          id="name"
+          class="form-control"
+          placeholder="Enter an Alias"
+          type="text"
+        />
+        <input
+          id="password"
+          type="password"
+          class="form-control"
+          placeholder="Private Room Password"
+          required="true"
+        />
+        <button class="btn btn-lg btn-success btn-block login" type="submit">
+          Login
+        </button>
+      </form>
+    </div>
+      <div class="the-reveal">
+        <div class="connected white martop">Connected users: <span id="players"></span></div>
+        <hr />
+        <div id="winner" class="white"></div>
+        <br /><br />
+        <div id="left" class="col-lg-8 left">
+          <!-- dealer -->
+          <div id="dealer"></div>
+          <span id="d_score" class="white marbot"></span>
+          <br />
+          <div id="dealerCard">
+          </div>
+          <br /><br />
+          <!-- player -->
+          <button class="btn btn-info btn-sm" id="hit">Hit</button>
+          <button class="btn btn-basic btn-sm" id="stand">Stand</button>
+          <button class="btn btn-danger btn-sm" id="new">New Game</button>
+          <br><br>
+          <span id="score" class="white martop"></span>
+          <br /><br />
+          <div id="player" class="white">
+          </div>
+          
+        </div>
+        <!-- chat -->
+        <div class="col-lg-4 right">
+          <p>
+          <b><span id="user" class="white"></span></b>
+          </p>
+          <ul id="messages"></ul>
+          <form class="the-reveal">
+            <input class="msg" id="m" autocomplete="off" />
+            <button class="btn btn-primary btn-sm normal">Send</button>
+          </form>
+        </div>
+      </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="/public/chat.js"></script>
+  </body>
+</html>

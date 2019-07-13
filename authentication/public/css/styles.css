@@ -1,0 +1,53 @@
+@font-face { font-family: Coffee-tin; font-weight: bold; src: url('./../CoffeeTin\ Initials.ttf'); }
+
+html,body { 
+background: url("./../images/ba2.jpg");
+  font: 14px Helvetica, Arial;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+form input { 
+  border: 0; 
+  margin-right: .5%;
+  float: left;
+}
+label{
+    color: white;
+}
+
+.form-group {
+  margin-bottom: 5px;
+}
+.form-control{
+    margin-bottom: 5px;
+    width:20px;
+}
+.form-signin {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: auto;
+  
+}
+
+.form-signin-heading {
+	margin-bottom: 30px;
+}
+
+.blackjack{
+  color:#FFF;
+  font-family: 'Coffee-tin';
+  font-size: 50px;
+}
+
+.first-container{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
