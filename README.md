@@ -9,7 +9,7 @@ Also authenticate yourself to play and keep track of your overall profit/loss!
 
 ## How to set it up?
 - Clone this repository.
-- Then inside the folder  
+- Then inside the folder.
 
 Using npm:
 
@@ -23,6 +23,10 @@ Using npm:
 ```bash
 $ npm start
 ```
+# Screenshots
+![](./Screenshots/screenshot1.png)
+
+![](./Screenshots/Screenshot2.png)
 
 ## Technology Stack
 - HTML, CSS
