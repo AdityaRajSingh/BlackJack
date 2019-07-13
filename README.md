@@ -1,19 +1,40 @@
-# TEAM-AJ
 # BLACK JACK
 
-
-A multiplayer online blackjack game
+A multiplayer online blackjack game.
 
 
 ## Description
   A multiplayer blackjack game made using Node JS and Socket.io in which you can play with others sharing your own private room password. 
 Also authenticate yourself to play and keep track of your overall profit/loss!
 
+## How to set it up?
+- Clone this repository.
+- Then inside the folder.
 
-## Team members (with github username)
+Using npm:
 
- ### Aditya Raj Singh - (@adityarajsingh)
- ### Jasbinder Singh Loomba - (@prince-loomba)
+```bash
+$ npm install
+```
+
+## How to start? 
+Using npm:
+
+```bash
+$ npm start
+```
+# Screenshots
+![](./Screenshots/Screenshot1.png)
+
+![](./Screenshots/Screenshot2.png)
+
+## Technology Stack
+- HTML, CSS
+- Javascript
+- Node.js 
+- MongoDB 
+- Socket.io 
+
 ## References
-#### Stack Overflow
-#### socket.io
+- Stack Overflow
+- Socket.io
