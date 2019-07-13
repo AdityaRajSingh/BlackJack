@@ -25,11 +25,11 @@ $ npm start
 ```
 
 ## Technology Stack
-#### HTML, CSS
-#### Javascript
-#### Node.Js 
-#### MongoDB 
-#### Socket.io 
+- HTML, CSS
+- Javascript
+- Node.Js 
+- MongoDB 
+- Socket.io 
 
 ## References
 - Stack Overflow
