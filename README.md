@@ -10,6 +10,7 @@ Also authenticate yourself to play and keep track of your overall profit/loss!
 ## How to set it up?
 - Clone this repository.
 - Then inside the folder  
+
 Using npm:
 
 ```bash
