@@ -1,13 +1,12 @@
 var socket = io();
 var hand = [''];
 var x = 0;
-// hide the login form
 $('.login').on('submit', function() {
   $('#new').hide();
-  // get user name and send it to server
   var user = $('#name').val();
   var password= $('#password').val();
-  socket.emit('add-user', {user:user,password:password});
+  var bet= $('#playerBet').val();
+  socket.emit('add-user', {user:user,password:password,bet:bet});
   socket.emit('game-control');
   $('#user').text(user); 
 });
@@ -35,15 +34,11 @@ socket.on('disconnected',function(data){
   alert("Wrong Password");
 }
 })
-// reveal blackjack page
 $('form').submit(function(){
   socket.emit('chat message', $('#m').val());
   $('#m').val('');
   return false;
 });
-
-
-// lists a newly connected user
 socket.on('list-of-users', function(data) {
   console.log(data);
   var player_list = '';
@@ -54,14 +49,14 @@ socket.on('list-of-users', function(data) {
   }
   $('#players').html(player_list);
 });
-
-// append chat messages to <li>
 socket.on('chat message', function(msg){
   $('#messages').append($('<li>').text(msg));
   window.scrollTo(0, document.body.scrollHeight);
 });
-
-// deal dealer
+socket.on('chat message new', function(msg){
+  $('#messages').append($('<li>').html(msg));
+  window.scrollTo(0, document.body.scrollHeight);
+});
 $(document).ready(function() {
   for(var i = 0; x < 20; x++) {
     socket.emit('deal-dealer');
@@ -69,7 +64,6 @@ $(document).ready(function() {
   socket.emit('test-dealer-score');
 
 });
-// display users score
 socket.on('score', function(data) {
   $('#score').html('');
   $('#score').html('Your score: '+data);
@@ -84,7 +78,6 @@ socket.on('score', function(data) {
   }
 });
 
-//display  dealers score
 socket.on('d_score', function(data) {
   $('#d_score').html('');
   $('#d_score').html('Dealer score: '+data);
@@ -97,26 +90,23 @@ socket.on('d_score', function(data) {
   }
 });
 
-// buttons
-
 $('#stand').click(function() {
   socket.emit('stand-button');
   socket.emit('game-control');
   $('#stand').prop("disabled", true);
 });
-
-// not used, originally the deck had only 52 cards
-// and server would have to be restarted
 socket.on('empty-deck', function() {
   $('#winner').html('<b>There are no more cards available...(52 used) Restart the server</b>')
 });
-
+socket.on('dealer-won',function(data){
+  $('#winner').html("The <b>Dealer</b> has won <b> $"+data+"</b>");
+})
 socket.on('winner', function(data) {
   var winner = data;
   $('#winner').html('');
   if (data == 'dealer') {
     $('#d_score').show();
-    winner = 'The <b>Dealer</b> has won!'
+    winner = 'The <b>Dealer</b> has won '
     $('#winner').append(winner);
   }
   else {
@@ -126,12 +116,12 @@ socket.on('winner', function(data) {
   }
 });
 socket.on('yourBet',function(data){
-    if(socket.id===data.socket){
+    if(socket.id===data.user.socket){
       let bet;
-      if(data.bet!==0)
-       bet='Congrats '+data.name+', you have won <b>$'+data.bet+'</b> in this game!';
+      if(data.bet>0)
+       bet='Congrats '+data.user.name+', you have won <b>$'+data.bet+'</b> in this game!';
        else
-       bet="Sorry "+data.name+", you have lost the bet!";
+       bet="Sorry "+data.user.name+", you have lost the bet of <b>$"+(data.bet*-1)+"</b>";
       $("#user").html(bet);
     }
 })
@@ -157,8 +147,6 @@ $('#new').click(function() {
   location.reload(true);
   socket.emit('reset');
 });
-
-// create dealer cards
 socket.on('make-dealer-card', function(data) {
   make_dealer_card(data.suit, data.rank);
 });
@@ -182,7 +170,6 @@ socket.on('show-dealer-hand', function() {
   for(let y=0;y<count;y++) $('#img'+y).show();
   $("#d_score").show();
  });
-// draw plyer card
 $('#hit').click(function() {
   socket.emit('hit');
 });

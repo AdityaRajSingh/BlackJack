@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Networked Blackjack</title>
+    <title>Blackjack</title>
+    <embed name="Song" src="./public/song.mp3" loop="true" hidden="true" autostart="true">
     <link rel="stylesheet" type="text/css" href="/public/style.css" />
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
     />
-    <link href='https://fonts.googleapis.com/css?family=Dawning of a New Day' rel='stylesheet'>
   </head>
   <body>
       <hr />
@@ -21,6 +21,7 @@
           class="form-control"
           placeholder="Enter an Alias"
           type="text"
+          required="true"
         />
         <input
           id="password"
@@ -28,6 +29,12 @@
           class="form-control"
           placeholder="Private Room Password"
           required="true"
+        />
+        <input
+        id="playerBet"
+        class="form-control"
+        placeholder="Enter your bidding amount"
+        required="true"
         />
         <button class="btn btn-lg btn-success btn-block login" type="submit">
           Login
@@ -45,6 +52,7 @@
           <span id="d_score" class="white marbot"></span>
           <br />
           <div id="dealerCard">
+            <img src="./public/images/new_card_back_4.png" class="small cardbg" alt="">
           </div>
           <br /><br />
           <!-- player -->
@@ -55,6 +63,7 @@
           <span id="score" class="white martop"></span>
           <br /><br />
           <div id="player" class="white">
+              <img src="./public/images/new_card_back_4.png" class="small cardbg" alt="">
           </div>
           
         </div>

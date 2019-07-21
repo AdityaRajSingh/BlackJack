@@ -2,38 +2,37 @@ var express = require('express')
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-
 var users = [];
 var dealer = {
   'total': 0,
 };
-// list of users
+
 var index = 0;
-// card & deck global var
+
 var suits = ['hearts', 'diams', 'clubs', 'spades'];
 var ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
 var deck = [];
 
-// call when all players are connected
+
 make_deck();
 
 function make_deck() {
   deck = [];
-  // suits
+  
   for( var i = 0; i < suits.length; i++ ) {
-    // ranks
+    
     for( var j = 0; j < ranks.length; j++ ) {
-      // cards
+      
       var card = {};
       card.suit = suits[i];
       card.rank = ranks[j];
-      // add card to the deck
+      
       deck.push(card);
     }
   }
 }
 
-// function to draw a random card
+
 function draw_card() {
   var card;
   if(deck.length > 0) {
@@ -43,28 +42,30 @@ function draw_card() {
   return card;
 }
 
-// allow use of external files
+
 app.use('/public',express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-http.listen( 80 , function(){
+http.listen(process.env.PORT || 80, function(){
   console.log('listening on *:80');
 });
 
 io.on('connection', function(socket) {
-  // send a message
+  
   socket.on('chat message', function(msg){
     for(var i = 0; i < users.length; i++) {
       if(users[i].socket === socket.id) {
-        io.emit('chat message', users[i].name + ': ' + msg);
+        if(msg==="")msg=" has a bet of $"+users[i].bet+"</b>";
+        else msg=":</b> "+msg;
+        io.emit('chat message new', "<b>"+users[i].name + msg);
       }
     }
   });
   
-  // add a user (socket id is used to find the user)
+  
   socket.on('add-user', function(data){
     let flag=0;
     if(users.length){
@@ -86,7 +87,7 @@ io.on('connection', function(socket) {
         'socket': socket.id,
         'total': 0,
         'turn': false,
-        'bet':1000
+        'bet':data.bet
       });
       io.emit('connected',socket.id);
       io.emit('hide-dealer-hand');
@@ -97,12 +98,12 @@ io.on('connection', function(socket) {
     }
   });
 
-  // turn based control
+  
   socket.on('game-control', function() {
     for(var i = 0; i < users.length; i++) {
-      // find the current player
+      
       if(users[index].socket != socket.id) {
-        // if it is not the current players turn disable buttons
+        
         users[i].turn = false;
         socket.emit('user-turn', users[i].turn);
       }
@@ -113,9 +114,9 @@ io.on('connection', function(socket) {
     if (dealer.total < 17) {
       var card = draw_card();
       if(card) {
-        // make card
+        
         io.emit('make-dealer-card',{'suit': card.suit, 'rank': card.rank});
-        // adds up the users current total
+        
         switch (card.rank) {
           case 'J':
           case 'Q':
@@ -142,9 +143,9 @@ io.on('connection', function(socket) {
   socket.on('hit', function() {
     var card = draw_card();
     if(card) {
-      // make card
+      
       socket.emit('make-card',{'suit': card.suit, 'rank': card.rank});
-      // adds up the users current total
+      
       switch (card.rank) {
         case 'J':
         case 'Q':
@@ -168,7 +169,7 @@ io.on('connection', function(socket) {
     }
   });
   
-  // checks if dealer has 21
+  
   socket.on('test-score', function() {
     if(dealer.total == 21) {
       for(var i = 0; i < users.length; i++) {
@@ -180,10 +181,11 @@ io.on('connection', function(socket) {
     users=[];
     socket.emit('reset');
   })
-  // moves to the next user
+  
   socket.on('stand-button', function() {
+    io.emit('chat message new',"<b>"+users[index].name+" has a score of "+users[index].total+"</b>");
     if (users[index+1] == undefined) {
-      // reset to first user
+      
       index = 0;
       io.emit('display-new-game',users);
       io.emit('user-turn', false);
@@ -194,25 +196,33 @@ io.on('connection', function(socket) {
           if(users[i].total>max){max=users[i].total;win=users[i];}
         }
         io.emit('winner', win.name);
+        let sum=0;
+        let j;
     for(let i in users)
     {
-      if(users[i].socket===win.socket){users[i].bet=(users.length+1)*(1000)}
-      else{users[i].bet=0;}
-      io.emit('yourBet',users[i]);
+      sum+=parseInt(users[i].bet);
+      if(users[i]===win){j=i;}
+      else{io.emit('yourBet',{user:users[i],bet:parseInt(users[i].bet)*(-1)})
+    }
+    if(j){
+      io.emit('yourBet',{user:users[j],bet:sum});
+    }
+    else{
+     if(index==users.length-1) io.emit('dealer-won',sum);
     }
         io.emit('show-dealer-hand');
           io.emit('gameOver');
       }
-      // io.to(users[index].socket).emit('user-turn', true);
-    } else {
+     }
+     } else {
       index++;
       users[index].turn = true;
       io.to(users[index].socket).emit('user-turn', true);
     }
   });
-  // reset game
+  
   socket.on('reset', function(reset){
-    // so the deck does not empty
+    
     make_deck();
     dealer.total = 0;
     for(var i = 0; i < users.length; i++) {
@@ -220,7 +230,7 @@ io.on('connection', function(socket) {
     }
   });
 
-  // user disconnects
+  
   socket.on('disconnect', function() {
     for(var i = 0; i < users.length; i++) {
       if(users[i].socket === socket.id) {

@@ -110,12 +110,27 @@ font-size: 18px;
   height: 200px;
   width: 130px;
   margin-right: 15px;
+position: relative;
+  animation-name: example;
+  animation-duration: 0.4s;
+  animation-direction: normal;
+    animation-timing-function: ease-in;
+}
+
+@-webkit-keyframes example {
+  0%   { left:0px; top:-30px;}
+  100%  { left:0px; top:0px;}
+}
+.cardbg{
+  height: 228px;
+  width:210px;
+  margin-right: 0px;
 }
 .white{
   color: #FFF;
 }
 .martop{
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .marbot{
   margin-bottom: 20px;
