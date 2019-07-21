@@ -7,6 +7,9 @@ A multiplayer online blackjack game.
   A multiplayer blackjack game made using Node JS and Socket.io in which you can play with others sharing your own private room password. 
 Also authenticate yourself to play and keep track of your overall profit/loss!
 
+## Demo
+[Click Here](https://www.youtube.com/watch?v=vaTA9Ve-tVw) 
+
 ## How to set it up?
 - Clone this repository.
 - Then inside the folder.
