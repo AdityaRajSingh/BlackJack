@@ -11,7 +11,7 @@ const jwt=require('jsonwebtoken');
 
 
 
-mongoose.connect("mongodb+srv://adityarajsingh:<password></password>@cluster0-s8drg.mongodb.net/test?retryWrites=true&w=majority",{useNewUrlParser:true});
+mongoose.connect("mongodb+srv://adityarajsingh:<password>@cluster0-s8drg.mongodb.net/test?retryWrites=true&w=majority",{useNewUrlParser:true});
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
@@ -86,10 +86,11 @@ app.post('/signin',function(req,res){
             );
 
 
-               res.json({
-                   "message":"Auth Successfull",                
-                   "token":token
-                   }).status(200);
+            //    res.json({
+            //        "message":"Auth Successfull",                
+            //        "token":token
+            //        }).status(200);
+            res.redirect("http://localhost:80/")
                
            }
            else{

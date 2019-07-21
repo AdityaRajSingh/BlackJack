@@ -51,3 +51,11 @@ label{
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
+.anchor{
+  text-decoration:none;
+  color:white;
+}
+.label-user{
+  margin-left:20px;
+}
