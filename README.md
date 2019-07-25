@@ -34,6 +34,7 @@ $ npm start
 ## Technology Stack
 - HTML, CSS
 - Javascript
+- jQuery
 - Node.js 
 - MongoDB 
 - Socket.io 
