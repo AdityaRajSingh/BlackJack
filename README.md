@@ -42,3 +42,8 @@ $ npm start
 ## References
 - Stack Overflow
 - Socket.io
+
+## Future Updates
+- Leaderboard
+- Authorization using Social Platforms
+- Multiple Rooms
