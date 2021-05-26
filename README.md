@@ -8,7 +8,7 @@ A multiplayer online blackjack game.
 Also authenticate yourself to play and keep track of your overall profit/loss!
 
 ## Demo
-[Click Here](https://www.youtube.com/watch?v=vaTA9Ve-tVw) 
+A complete demo of the game can be found [here].(https://www.youtube.com/watch?v=vaTA9Ve-tVw) 
 
 ## How to set it up?
 - Clone this repository.
@@ -34,6 +34,7 @@ $ npm start
 ## Technology Stack
 - HTML, CSS
 - Javascript
+- jQuery
 - Node.js 
 - MongoDB 
 - Socket.io 
@@ -41,3 +42,8 @@ $ npm start
 ## References
 - Stack Overflow
 - Socket.io
+
+## Future Updates
+- Leaderboard
+- Authorization using Social Platforms
+- Multiple Rooms
