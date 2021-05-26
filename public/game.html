@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blackjack</title>
+    <link rel="stylesheet" type="text/css" href="css/game.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+      <hr />
+      <h1 class="blackjack" id="bj" align="center">Black Jack</h1>
+      <div class="waiting">
+
+      <h2 class="roomHeading" id="waitingrooom" align="center">Waiting Room</h2>
+      <h2 class="roomHeading" id="roomid" align="center" >Room Id</h2>
+      
+      <div class="centerAlign text-center" style="margin-top: 40px;">
+        <ul class="list-group">
+            <li class="list-group-item active">Users</li>
+            </li>
+        </ul>
+        <button class="btn btn-lg btn-warning login d-none centerAlignBtn" id="startBtnContainer" style="margin-top: 20px;">Start</button>
+    </div>
+  </div>
+    <div class="the-reveal" style="display:none">
+      <div class="connected white martop">Connected users: <span id="players"></span></div>
+      <hr />
+      <div id="winner" class="white"></div>
+      <br /><br />
+      <div id="left" class="col-lg-8 left">
+        <!-- dealer -->
+        <div id="dealer"></div>
+        <span id="d_score" class="white marbot"></span>
+        <br />
+        <div id="dealerCard">
+          <img src="./images/new_card_back_4.png" class="small cardbg" alt="">
+        </div>
+        <br /><br />
+        <!-- player -->
+        <button class="btn btn-info btn-sm" id="hit">Hit</button>
+        <button class="btn btn-basic btn-sm" id="stand">Stand</button>
+        <!-- <button class="btn btn-danger btn-sm" id="new">New Game</button> -->
+        <br><br>
+        <span id="score" class="white martop"></span>
+        <br /><br />
+        <div id="player" class="white">
+            <img src="./images/new_card_back_4.png" class="small cardbg" alt="">
+        </div>
+        
+      </div>
+      <!-- chat -->
+      <div class="col-lg-4 right">
+        <p>
+        <b><span id="user" class="white"></span></b>
+        </p>
+        <ul id="messages"></ul>
+        <form class="the-reveal">
+          <input class="msg" id="m" autocomplete="off" />
+          <button class="btn btn-primary btn-sm">Send</button>
+        </form>
+      </div>
+    </div>
+      
+      
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js" integrity="sha512-BHtomM5XDcUy7tDNcrcX1Eh0RogdWiMdXl3wJcKB3PFekXb3l5aDzymaTher61u6vEZySnoC/SAj2Y/p918Y3w==" crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="js/game.js"></script>
+  </body>
+</html>

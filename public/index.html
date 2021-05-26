@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- Code By Webdevtrick ( https://webdevtrick.com )-->
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Blackjack</title>
+  <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <h1 class="blackjack" id="bj" align="center">Black Jack</h1>
+  <div class="form">
+      
+      <ul class="top-area">
+        <li class="tab active"><a href="#createRoom">Create Room</a></li>
+        <li class="tab"><a href="#joinRoom">Join Room</a></li>
+      </ul>
+      
+      <div class="tab-content">
+        <div id="createRoom">   
+          <h1>Create Room</h1>
+          
+          <form action="game.html" method="get">
+          
+          
+            <div class="label-field">
+                <label>Username</label>
+              <input type="text"  name="username" required  placeholder="Enter Username" />
+            </div>
+        
+          
+ 
+          <div class="label-field">
+            <label>Room ID</label>
+            <input type="text"required readonly="readonly" required id="roomid" name="roomid"  placeholder="Enter Room Id"/>
+          </div>
+          
+          <div class="label-field">
+            <label>Bidding Amount</label>
+            <input type="number"    required name="bidamt" placeholder="Enter your bidding amount"/>
+          </div>
+
+          <div class="label-field">
+            <input type="hidden"  required name="type" value="1"/>
+          </div>
+          
+          <button type="submit" class="button button-block"/>Create Room</button>
+          
+          </form>
+ 
+        </div>
+        
+        <div id="joinRoom" >   
+          <h1>Join Room</h1>
+          
+          <form action="game.html" method="get">
+          
+          
+            <div class="label-field">
+                <label>Username</label>
+              <input type="text" required name="username"  placeholder="Enter Username" />
+            </div>
+        
+          
+ 
+          <div class="label-field">
+            <label>Room ID</label>
+            <input type="text" required name="roomid" placeholder="Enter Room Id"/>
+          </div>
+          
+          <div class="label-field">
+            <label>Bidding Amount</label>
+            <input type="number"required name="bidamt"  placeholder="Enter your bidding amount"/>
+          </div>
+          
+          <div class="label-field">
+            <input type="hidden"  required name="type" value="0"/>
+          </div>
+
+          <button type="submit" class="button button-block"/>Join Room</button>
+          
+          </form>
+ 
+        </div>
+        
+      </div>  
+</div>
+ 
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script  src="./js/index.js"></script>
+ 
+</body>
+</html>
