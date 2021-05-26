@@ -48,4 +48,3 @@ $ npm start
 ## Future Updates
 - Leaderboard
 - Authorization using Social Platforms
-- Multiple Rooms
