@@ -2,7 +2,8 @@
 
 A multiplayer online blackjack game.
 
-
+## Play
+Want to try it out?  [Play].(https://black--jack.herokuapp.com/) 
 ## Description
   A multiplayer blackjack game made using Node JS and Socket.io in which you can play with others sharing your own private room password. 
 Also authenticate yourself to play and keep track of your overall profit/loss!
@@ -31,12 +32,13 @@ $ npm start
 
 ![](./Screenshots/Screenshot2.png)
 
+![](./Screenshots/Screenshot3.png)
+
 ## Technology Stack
 - HTML, CSS
 - Javascript
 - jQuery
 - Node.js 
-- MongoDB 
 - Socket.io 
 
 ## References
