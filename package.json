@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Hackathon project",
   "dependencies": {
-    "express": "^4.15.2",
+    "express": "^4.17.3",
     "package.json": "^2.0.1",
     "socket.io": "^2.0.4"
   },
